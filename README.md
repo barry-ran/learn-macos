@@ -1,5 +1,5 @@
-# learn-macox
-learn macox develop
+# learn-macos
+learn macos develop
 
 # 快速阅读
 
@@ -40,3 +40,20 @@ Cocoa OC入门的经典书：
 Cocoa swift:
 
 [cocoa-programming-for-osx](https://legacy.gitbook.com/book/josercc/cocoa-programming-for-osx/details)
+
+# 重要知识点
+
+## OC内存管理机制
+[OC 内存管理之手动内存管理MRC](https://www.cnblogs.com/oc-bowen/p/5053039.html)
+
+[高效 OC开发之内存管理](https://blog.csdn.net/wangyanchang21/article/details/79356164)
+
+[Objective-C 中的内存分配](https://hit-alibaba.github.io/interview/iOS/ObjC-Basic/MM.html)
+
+[OC-OC的内存管理机制](https://www.jianshu.com/p/6a5be7bf04d5)
+
+[Objective-C 内存管理基础](https://www.jianshu.com/p/954bb5f73aa7)
+
+[Objective-C 内存管理深入](https://www.jianshu.com/p/b6967956660c)
+
+
