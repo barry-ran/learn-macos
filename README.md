@@ -56,4 +56,6 @@ Cocoa swift:
 
 [Objective-C 内存管理深入](https://www.jianshu.com/p/b6967956660c)
 
+[彻底理解 iOS 内存管理（MRC、ARC）](https://www.jianshu.com/p/48665652e4e4)
+
 
