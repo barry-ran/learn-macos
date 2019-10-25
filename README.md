@@ -59,9 +59,9 @@ Cocoa swift:
 
 [彻底理解 iOS 内存管理（MRC、ARC）](https://www.jianshu.com/p/48665652e4e4)
 
-## macos(cocoa)
+# macos(cocoa)
 
-# 官方文档
+## 官方文档
 [文档主页](https://developer.apple.com/library/archive/navigation/)
 
 [Cocoa Application Layer](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CocoaApplicationLayer/CocoaApplicationLayer.html)
