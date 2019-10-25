@@ -1,7 +1,8 @@
 # learn-macos
 learn macos develop
 
-# 快速阅读
+# OC
+## 快速阅读
 
 [菜鸟教程：OC入门教程](https://www.runoob.com/w3cnote/objective-c-tutorial.html)
 
@@ -15,7 +16,7 @@ learn macos develop
 
 [从 C++ 到 Objective-C的快速指南(上文翻译)](https://www.oschina.net/translate/from-cplusplus-to-objective-c-a-quick-guide)
 
-# 优秀博客
+## 优秀博客
 [从 C++ 到 Objective-C](https://www.devbean.net/category/objective-c/page/2/)
 
 [macOS 开发 - 入门笔记](https://blog.csdn.net/lovechris00/article/details/72779076)
@@ -24,7 +25,7 @@ learn macos develop
 
 [书籍推荐](https://www.cnblogs.com/pugang/p/4657799.html)
 
-# 书籍
+## 书籍
 OC的经典书:
 
 [FromCtoObjetive-C](https://lincode.github.io/docs/FromCtoObjetive-C.pdf)
@@ -41,7 +42,7 @@ Cocoa swift:
 
 [cocoa-programming-for-osx](https://legacy.gitbook.com/book/josercc/cocoa-programming-for-osx/details)
 
-# 重要知识点
+## 重要知识点
 
 ## OC内存管理机制
 [OC 内存管理之手动内存管理MRC](https://www.cnblogs.com/oc-bowen/p/5053039.html)
@@ -57,5 +58,20 @@ Cocoa swift:
 [Objective-C 内存管理深入](https://www.jianshu.com/p/b6967956660c)
 
 [彻底理解 iOS 内存管理（MRC、ARC）](https://www.jianshu.com/p/48665652e4e4)
+
+## macos(cocoa)
+
+# 官方文档
+[文档主页](https://developer.apple.com/library/archive/navigation/)
+
+[Cocoa Application Layer](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/OSX_Technology_Overview/CocoaApplicationLayer/CocoaApplicationLayer.html)
+
+[窗口相关](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/WinPanel/Introduction.html#//apple_ref/doc/uid/10000031i)
+
+[多线程和runloop](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Multithreading/Introduction/Introduction.html#//apple_ref/doc/uid/10000057i-CH1-SW1)
+
+[foundation api](https://developer.apple.com/documentation/foundation)
+
+[appkit api](https://developer.apple.com/documentation/appkit)
 
 
