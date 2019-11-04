@@ -11,10 +11,14 @@
 
 // 定义MyObject类，继承NSObject
 @interface MyObject : NSObject {
-@public int member0; // 共有成员变量
+@public int publicMember_; // 公有成员变量
     // 默认protect属性
-    int member1; // 成员变量
+    int protectMember_; // 成员变量
 }
+
+// 声明属性来访问保护变量（读写）（其实是自动声明存取函数）
+@property(readwrite) int protectMember_;
+
 // 返回值 方法名add:and:，参数为a，b，和c++不同的是，参数可以夹杂在方法名之间，用:标示参数，与阅读习惯更加符合,例如：
 //       加       a 和        b
 // 其实严格来说，add是方法名，and是标签，oc使用方法名+标签的方式确定一个方法
@@ -26,17 +30,20 @@
 // 类实现
 @implementation MyObject {
     // 在这里声明的是private属性
-    int member2; // 私有成员变量
+    int privateMember_; // 私有成员变量
 }
+
+// 告诉编译器，protectMember_的存取属性自动帮我实现
+@synthesize protectMember_;
 
 // 构造方法
 - (MyObject*) init {
     NSLog(@"init");
-    member0 = 0;
-    member1 = 0;
+    publicMember_ = -1;
+    protectMember_ = -2;
+    privateMember_ = -3;
     
     self = [super init];
-    
     return self;
 }
 
@@ -55,7 +62,78 @@
 }
 @end
 
+// 协议，类似虚基类
+@protocol Locking
+- (void)lock;
+- (void)unlock;
+@optional - (void)test; // 可选的，可以不用实现
+@end
+
+// 声明SomeClass实现Locking协议
+@interface SomeClass : NSObject<Locking>
+@end
+
+@implementation SomeClass
+- (void)lock {
+    NSLog(@"lock");
+}
+- (void)unlock {
+    NSLog(@"unlock");
+}
+@end
+
+// 测试分类:扩展原有类的功能
+// 声明MyObject类的分类ExtObject
+@interface MyObject(ExtObject)
+- (void) print;
+@end
+
+@implementation MyObject(ExtObject)
+
+- (void) print
+{
+    // 扩展方法中访问原类的属性
+    NSLog(@"ExtObject print privateMember_:%d", self->privateMember_);
+}
+
+@end
+
+// 运行环境为自动垃圾收集ARC
+
 int main(int argc, const char * argv[]) {
+    // 字符串
+    NSString* myString = @"My String\n";
+    NSLog(@"myString:%@", myString);
+    NSString* anotherString = [NSString stringWithFormat:@"%d %@", 1, @"String"];
+    NSLog(@"anotherString:%@", anotherString);
+    // 从一个C语言字符串创建Objective-C字符串
+    NSString* fromCString = [NSString stringWithCString:"A C string" encoding:NSASCIIStringEncoding];
+    NSLog(@"fromCString:%@", fromCString);
+    
+    // 测试访问property
+    MyObject* testPro = [[MyObject alloc] init];
+    testPro.protectMember_ = 111; // 注意：点表达式，等于[testPro setProtectMember_: 111;
+    NSLog(@"Access protectMember_ by message (%d), dot notation(%d), property name(%@) and direct instance variable access (%d)",
+          [testPro protectMember_], testPro.protectMember_, [testPro valueForKey:@"protectMember_"], testPro->protectMember_);
+    // 动态读取属性
+    /*
+    int i;
+    int propertyCount = 0;
+    objc_property_t *propertyList = class_copyPropertyList([testPro class], &propertyCount);
+    for ( i=0; i < propertyCount; i++ ) {
+        objc_property_t *thisProperty = propertyList + i;
+        const char* propertyName = property_getName(*thisProperty);
+        NSLog(@"MyObject has a property: '%s'", propertyName);
+    }
+     */
+    
+    // 测试扩展类，直接向MyObject对象发送消息即可
+    [testPro print];
+    
+    // 测试协议
+    SomeClass* sc = [SomeClass new];
+    [sc lock];
+    [sc unlock];
     
     // 局部自动释放池，{构造池，}释放池，释放时自动释放自动池内变量，避免内存峰值
     @autoreleasepool {
@@ -63,8 +141,8 @@ int main(int argc, const char * argv[]) {
         [MyObject staticFunc:@"barry"];
         // 组合发送消息，先向MyObject发送alloc，再向返回值发送init
         MyObject* obj = [[MyObject alloc] init];
-        obj->member0 = 1;
-        NSLog(@"member0 %d", obj->member0);
+        obj->publicMember_ = 1;
+        NSLog(@"member0 %d", obj->publicMember_);
         // :标示参数，参数夹杂在方法名之间，顺序和方法名声明顺序一样
         NSLog(@"a+b=%d", [obj add:1 and:2]);
     }
