@@ -11,6 +11,7 @@
 		4C2D5B3B23713CF7007D779B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C2D5B3A23713CF7007D779B /* Assets.xcassets */; };
 		4C2D5B3E23713CF7007D779B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C2D5B3C23713CF7007D779B /* MainMenu.xib */; };
 		4C2D5B4123713CF7007D779B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D5B4023713CF7007D779B /* main.m */; };
+		4CA00E4623713E52008AF8A3 /* WindowDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA00E4523713E52008AF8A3 /* WindowDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,8 @@
 		4C2D5B3F23713CF7007D779B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C2D5B4023713CF7007D779B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4C2D5B4223713CF7007D779B /* Window.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Window.entitlements; sourceTree = "<group>"; };
+		4CA00E4423713E52008AF8A3 /* WindowDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WindowDelegate.h; sourceTree = "<group>"; };
+		4CA00E4523713E52008AF8A3 /* WindowDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WindowDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +58,8 @@
 			isa = PBXGroup;
 			children = (
 				4C2D5B3723713CF6007D779B /* AppDelegate.h */,
+				4CA00E4423713E52008AF8A3 /* WindowDelegate.h */,
+				4CA00E4523713E52008AF8A3 /* WindowDelegate.m */,
 				4C2D5B3823713CF6007D779B /* AppDelegate.m */,
 				4C2D5B3A23713CF7007D779B /* Assets.xcassets */,
 				4C2D5B3C23713CF7007D779B /* MainMenu.xib */,
@@ -134,6 +139,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CA00E4623713E52008AF8A3 /* WindowDelegate.m in Sources */,
 				4C2D5B4123713CF7007D779B /* main.m in Sources */,
 				4C2D5B3923713CF6007D779B /* AppDelegate.m in Sources */,
 			);
