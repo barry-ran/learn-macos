@@ -6,7 +6,7 @@ learn macos develop
 - 两天读完[FromCtoObjetive-C](https://lincode.github.io/docs/FromCtoObjetive-C.pdf)，系统学习OC
 - 一天写代码实践OC
 - 四天读完[Cocoa入门-使用Objective-c 中文第二版](https://www.jb51.net/books/459308.html#downintro2)，入门Cocoa
-- 一天疑难知识点整理（例如内存管理、窗口系统、事件循环）
+- 一天疑难知识点整理（例如内存管理、窗口系统、事件循环）,[Cocoa入门：窗口系统和事件循环](doc/Cocoa入门：窗口系统和事件循环.md)
 - 后期积累：慢慢来吧，闲暇时间阅读[官方文档](https://developer.apple.com/library/archive/navigation/)，进阶书籍
 
 # 参考文档
