@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (IBAction)closeWindowBtnClick:(id)sender;
 
 -(void)threadFun;
+-(void)createCodeWindowWapper;
 -(void)createCodeWindow;
 
 @end

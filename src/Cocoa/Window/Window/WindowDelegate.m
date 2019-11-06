@@ -44,7 +44,19 @@
 -(void)threadFun
 {
     NSLog(@"thread fun");
+    [self createCodeWindowWapper];
+}
+
+-(void)createCodeWindowWapper
+{
+#if 1
     [self createCodeWindow];
+#else
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        [self createCodeWindow];
+    });
+#endif
+    
 }
 
 -(void)createCodeWindow
@@ -60,4 +72,5 @@
     codeWindow_ = [[NSWindow alloc] initWithContentRect:frame styleMask:style backing:NSBackingStoreBuffered defer:YES];
     [codeWindow_ center];
 }
+
 @end
