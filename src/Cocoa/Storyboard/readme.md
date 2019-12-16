@@ -1,0 +1,8 @@
+
+Xcode所提供的默认storyboard模板包括一个NSWindowController，一个NSWindow，一个NSViewController，在NSViewController中还有一个NSView，我们的控件一般都写在这个NSView中。而起始，storyboard把一个逻辑给简化了，关于NSWindow，NSWindowController，NSView和NSViewController，这四个类可以说是相互依存的。
+
+而xib模版只会创建一个NSWindow和一个NSView。
+
+参照[此博客](https://blog.csdn.net/fl2011sx/article/details/73252859)了解如何自己代码使用NSWindow，NSWindowController，NSView和NSViewController来创建窗口。
+
+

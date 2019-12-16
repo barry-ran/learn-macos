@@ -93,7 +93,7 @@
     NSLog(@"**************************\n");
     
     // contentViewController
-    // 默认都没有contentViewController
+    // 默认都没有创建contentViewController
     /*
      The main content view controller for the window. This provides the contentView of the window. Assigning this value will remove the existing contentView and will make the contentViewController.view the main contentView for the window. The default value is nil. The contentViewController only controls the contentView, and not the title of the window. The window title can easily be bound to the contentViewController with the following: [window bind:NSTitleBinding toObject:contentViewController withKeyPath:@"title" options:nil]. Setting the contentViewController will cause the window to resize based on the current size of the contentViewController. Autolayout should be used to restrict the size of the window. The value of the contentViewController is encoded in the NIB. Directly assigning a contentView will clear out the contentViewController.
      */
@@ -103,7 +103,7 @@
     NSLog(@"**************************\n");
     
     // windowController
-    // 默认没有windowController
+    // 默认没有创建windowController
     NSLog(@"xib window windowController:%p", [xibWindow_ windowController]);
     NSLog(@"code window windowController:%p", [codeWindow_ windowController]);
 }
