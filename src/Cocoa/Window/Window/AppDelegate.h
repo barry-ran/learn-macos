@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+// 实现NSApplicationDelegate协议，可以处理NSApplication相关事件
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
 @end
