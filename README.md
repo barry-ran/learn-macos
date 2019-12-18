@@ -93,4 +93,9 @@ Cocoa swift:
 
 [appkit api](https://developer.apple.com/documentation/appkit)
 
+- 其他
+[核心基础设计概念简介（NS**和CF**之间的关系，__bridge_retained等原理介绍）](https://developer.apple.com/library/archive/documentation/CoreFoundation/Conceptual/CFDesignConcepts/CFDesignConcepts.html#//apple_ref/doc/uid/10000122-SW1)
+
+[Core Foundation的内存管理编程指南(CF**Ref和CF**之类的内存管理原理)](https://developer.apple.com/library/archive/documentation/CoreFoundation/Conceptual/CFMemoryMgmt/CFMemoryMgmt.html#//apple_ref/doc/uid/10000127i)
+
 
