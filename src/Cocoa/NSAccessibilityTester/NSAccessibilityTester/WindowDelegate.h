@@ -12,7 +12,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WindowDelegate : NSObject
 
+- (void)openAccessibility;
+- (NSArray*)allWindows;
+- (void)printWindowInfo:(AXUIElementRef) window;
+
 - (IBAction)moveWindowBtnClick:(id)sender;
+- (void)printAllWindows;
+- (void)printAllWindows2;
+- (id) getWindow:(AXUIElementRef)window property :(NSString*)propType withDefaultValue:(id)defaultValue;
 
 @end
 
