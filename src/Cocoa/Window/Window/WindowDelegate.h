@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
-// 该类在由xib创建，相关IBAction事件在xib中手动关联到相关按钮
+// 该类对象在xib中创建，相关IBAction事件在xib中手动关联到相关按钮
 @interface WindowDelegate : NSObject
 
 // 响应按钮点击动作
