@@ -37,26 +37,31 @@ static CGEventRef callback(CGEventTapProxy proxy,
 }
 
 - (void)awakeFromNib {
+    catching_ = NO;
     // 事件传播是沿着硬件系统 → window server → 用户session → 应用程序这条路径的，每个箭头处都可以捕捉事件，而这个参数就决定了在哪捕捉事件
-    CGEventTapLocation location = kCGHIDEventTap;
+    //              kCGHIDEventTap kCGSessionEventTap kCGAnnotatedSessionEventTap
+    // 只有在kCGAnnotatedSessionEventTap阶段截获才能拿到kCGMouseEventWindowUnderMousePointer
+    CGEventTapLocation location = kCGAnnotatedSessionEventTap;
     // 要捕获的事件
     CGEventMask mask = CGEventMaskBit(kCGEventLeftMouseDown) |
                          CGEventMaskBit(kCGEventFlagsChanged);
 
     eventTap_ = CGEventTapCreate(location,                      // 捕获点
                                  kCGHeadInsertEventTap,         // 插入位置
-                                 kCGEventTapOptionListenOnly,   // 捕获方式
+                                 kCGEventTapOptionDefault,      // 捕获方式
                                  mask,                          // 捕获事件
                                  callback,                      // 回调函数
                                  (__bridge void*)(self));       // 自定义数据
-
+    if (!eventTap_) {
+        NSLog(@"eventTap_ is null");
+        return;
+    }
     CFRunLoopSourceRef source = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, eventTap_, 0);
     CFRunLoopAddSource(CFRunLoopGetCurrent(), source, kCFRunLoopCommonModes);
     CFRelease(source);
     
     // 默认是启用监听的，这里先关闭，由ui控制开关
     CGEventTapEnable(eventTap_, false);
-    catching_ = NO;
 }
 
 - (void)dealloc {
@@ -101,12 +106,15 @@ static CGEventRef callback(CGEventTapProxy proxy,
     case kCGEventLeftMouseDown:
       {
           NSLog(@"kCGEventLeftMouseDown");
+          
+          // 区分事件源
           Boolean fromApi = NO;
 #if 1
           // 可以直接获取事件的SourceStateID
           // 使用kCGEventSourceStatePrivate获取到的值是一个随机数，并不是-1，
           // 所以应该判断是否是kCGEventSourceStateHIDSystemState和kCGEventSourceStateCombinedSessionState
           int64_t sourceStateID = CGEventGetIntegerValueField(event, kCGEventSourceStateID);
+          NSLog(@"sourceStateID: %lld", sourceStateID);
           if ((kCGEventSourceStateHIDSystemState != sourceStateID)
               && (kCGEventSourceStateCombinedSessionState != sourceStateID)) {
               fromApi = YES;
@@ -122,10 +130,26 @@ static CGEventRef callback(CGEventTapProxy proxy,
               fromApi = YES;
           }
 #endif
-          // 获取鼠标下窗口标题
-          CGPoint location = CGEventGetLocation(event);
+          // 根据进程id过滤事件(确实可以过滤掉制定进程的事件，但是如果过滤鼠标左键会导致无法切换焦点窗口)
+          int64_t processIdTarget = CGEventGetIntegerValueField(event, kCGEventTargetUnixProcessID);
+          NSLog(@"processIdTarget: %lld", processIdTarget);
+          if (483 == processIdTarget) {
+              //return nil;
+          }
+          
+          // 获取鼠标下窗口标题(mac中有两个坐标系，如果用CGEventGetLocation获取的坐标不能用来windowNumberAtPoint)
+          CGPoint location = CGEventGetUnflippedLocation(event);
+          NSLog(@"location: (%f,%f)", location.x, location.y);
+          
+          // 只有在kCGAnnotatedSessionEventTap阶段截获才能拿到kCGMouseEventWindowUnderMousePointer和kCGMouseEventWindowUnderMousePointerThatCanHandleThisEvent
+          int64_t wn1 = CGEventGetIntegerValueField(event, kCGMouseEventWindowUnderMousePointer);
+          int64_t wn2 = CGEventGetIntegerValueField(event, kCGMouseEventWindowUnderMousePointerThatCanHandleThisEvent);
+          
+          // windowNumberAtPoint的方式都可以拿到windowNumber
           NSInteger windowNumber = [NSWindow windowNumberAtPoint:location belowWindowWithWindowNumber:0];
           CGWindowID windowID = (CGWindowID)windowNumber;
+          
+          NSLog(@"window id: %lld,%lld,%ld", wn1, wn2, (long)windowNumber);
           
           CFArrayRef array = CFArrayCreate(NULL, (const void **)&windowID, 1, NULL);
           NSArray *windowInfos = (__bridge NSArray*)CGWindowListCreateDescriptionFromArray(array);
