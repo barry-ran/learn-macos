@@ -102,6 +102,17 @@ static CGEventRef callback(CGEventTapProxy proxy,
       {
           NSLog(@"kCGEventLeftMouseDown");
           Boolean fromApi = NO;
+#if 1
+          // 可以直接获取事件的SourceStateID
+          // 使用kCGEventSourceStatePrivate获取到的值是一个随机数，并不是-1，
+          // 所以应该判断是否是kCGEventSourceStateHIDSystemState和kCGEventSourceStateCombinedSessionState
+          int64_t sourceStateID = CGEventGetIntegerValueField(event, kCGEventSourceStateID);
+          if ((kCGEventSourceStateHIDSystemState != sourceStateID)
+              && (kCGEventSourceStateCombinedSessionState != sourceStateID)) {
+              fromApi = YES;
+          }
+#else
+          // 之前不知道可以直接获取事件的SourceStateID，所以用了一个曲折的方法
           // 如果event的事件源是kCGEventSourceStatePrivate，则返回null
           CGEventSourceRef source = CGEventCreateSourceFromEvent(event);
           if(source) {
@@ -110,7 +121,7 @@ static CGEventRef callback(CGEventTapProxy proxy,
               // 事件源是kCGEventSourceStatePrivate，所以是api生成的事件
               fromApi = YES;
           }
-          
+#endif
           // 获取鼠标下窗口标题
           CGPoint location = CGEventGetLocation(event);
           NSInteger windowNumber = [NSWindow windowNumberAtPoint:location belowWindowWithWindowNumber:0];
