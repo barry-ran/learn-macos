@@ -98,6 +98,7 @@ static CGEventRef callback(CGEventTapProxy proxy,
                  event:(CGEventRef)event {
     switch (type) {
         case kCGEventTapDisabledByTimeout:
+            // 如果回调的处理时间过长，监听会被置为失效，并收到这个事件
             NSLog(@"kCGEventTapDisabledByTimeout");
             if (catching_) {
                 CGEventTapEnable(eventTap_, true);
@@ -169,7 +170,7 @@ static CGEventRef callback(CGEventTapProxy proxy,
             break;
         case kCGEventLeftMouseUp:
         {
-            NSLog(@"kCGEventLeftMouseDown*******************");
+            NSLog(@"kCGEventLeftMouseUp*******************");
             
             // 确实可以过滤掉制定进程的事件，如果过滤鼠标左键按下的话，记得同时过滤左键抬起，否则会导致无法切换焦点窗口)
             int64_t processIdTarget = CGEventGetIntegerValueField(event, kCGEventTargetUnixProcessID);
