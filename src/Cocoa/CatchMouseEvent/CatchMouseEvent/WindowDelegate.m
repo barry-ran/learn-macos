@@ -131,14 +131,25 @@ static CGEventRef callback(CGEventTapProxy proxy,
                 fromApi = YES;
             }
 #endif
-            // 根据进程id过滤事件
+            // 获取进程信息
             // 确实可以过滤掉制定进程的事件，如果过滤鼠标左键按下的话，记得同时过滤左键抬起，否则会导致无法切换焦点窗口)
             int64_t processIdTarget = CGEventGetIntegerValueField(event, kCGEventTargetUnixProcessID);
             NSLog(@"processIdTarget: %lld", processIdTarget);
+#if 0
+            // 根据进程id过滤
             if (878 == processIdTarget) {
                 return nil;
             }
+#else
+            // 根据进程名字过滤
+            char ProcName[1024];
+            proc_name((pid_t)CGEventGetIntegerValueField(event, kCGEventTargetUnixProcessID), ProcName, sizeof(ProcName));
+            NSString *Target = [NSString stringWithUTF8String: ProcName];
             
+            if ([Target isEqualToString: @"Finder"]) {
+                return nil;
+            }
+#endif
             // 获取鼠标下窗口标题(mac中有两个坐标系，如果用CGEventGetLocation获取的坐标不能用来windowNumberAtPoint)
             CGPoint location = CGEventGetUnflippedLocation(event);
             NSLog(@"location: (%f,%f)", location.x, location.y);
@@ -175,9 +186,21 @@ static CGEventRef callback(CGEventTapProxy proxy,
             // 确实可以过滤掉制定进程的事件，如果过滤鼠标左键按下的话，记得同时过滤左键抬起，否则会导致无法切换焦点窗口)
             int64_t processIdTarget = CGEventGetIntegerValueField(event, kCGEventTargetUnixProcessID);
             NSLog(@"processIdTarget: %lld", processIdTarget);
+#if 0
+            // 根据进程id过滤
             if (878 == processIdTarget) {
                 return nil;
             }
+#else
+            // 根据进程名字过滤
+            char ProcName[1024];
+            proc_name((pid_t)CGEventGetIntegerValueField(event, kCGEventTargetUnixProcessID), ProcName, sizeof(ProcName));
+            NSString *Target = [NSString stringWithUTF8String: ProcName];
+            
+            if ([Target isEqualToString: @"Finder"]) {
+                return nil;
+            }
+#endif
             
             // 获取鼠标下窗口标题(mac中有两个坐标系，如果用CGEventGetLocation获取的坐标不能用来windowNumberAtPoint)
             CGPoint location = CGEventGetUnflippedLocation(event);
