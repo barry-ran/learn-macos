@@ -143,7 +143,20 @@ static CGEventRef callback(CGEventTapProxy proxy,
                                       fromApi ? @"api" : @"mouse",
                                       windowTitle]];
             if (ignoreEvent == YES) {
-                // 直接返回nil，过滤掉事件
+                // 验证一下CGEventPostToPid发送鼠标事件是否有效
+                
+                // 原样转发有效
+                //int pid = [pidField intValue];
+                // CGEventPostToPid(pid, event);
+                
+                // 转发到其他进程无效
+                // CGEventSetIntegerValueField(event, kCGEventTargetUnixProcessID, 878);
+                // CGEventSetIntegerValueField(event, kCGMouseEventWindowUnderMousePointer, 145);
+                // CGEventSetIntegerValueField(event, kCGMouseEventWindowUnderMousePointerThatCanHandleThisEvent, 145);
+                // CGEventPostToPid(878, event);
+                
+                // 验证结论是鼠标事件只能发送给当前激活窗口
+                
                 return nil;
             }
         }
@@ -161,7 +174,19 @@ static CGEventRef callback(CGEventTapProxy proxy,
             }
             
             if (ignoreEvent == YES) {
-                // 直接返回nil，过滤掉事件
+                // 验证一下CGEventPostToPid发送鼠标事件是否有效
+                
+                // 原样转发有效
+                //int pid = [pidField intValue];
+                // CGEventPostToPid(pid, event);
+                
+                // 转发到其他进程无效
+                // CGEventSetIntegerValueField(event, kCGEventTargetUnixProcessID, 878);
+                // CGEventSetIntegerValueField(event, kCGMouseEventWindowUnderMousePointer, 145);
+                // CGEventSetIntegerValueField(event, kCGMouseEventWindowUnderMousePointerThatCanHandleThisEvent, 145);
+                // CGEventPostToPid(878, event);
+                
+                // 验证结论是鼠标事件只能发送给当前激活窗口
                 return nil;
             }
         }
