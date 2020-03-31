@@ -33,10 +33,18 @@ static CGEventRef callback(CGEventTapProxy proxy,
 @implementation WindowDelegate
 {
     CFMachPortRef eventTap_;
+    CFRunLoopSourceRef source_;
 }
 
 - (void)dealloc {
+    if (source_) {
+        CFRunLoopRemoveSource(CFRunLoopGetCurrent(), source_, kCFRunLoopCommonModes);
+        CFRelease(source_);
+    }
+    
     if (eventTap_) {
+        // 需要手动关闭，直接CFRelease并不会关闭
+        CGEventTapEnable(eventTap_, false);
         CFRelease(eventTap_);
     }
 }
@@ -66,9 +74,8 @@ static CGEventRef callback(CGEventTapProxy proxy,
         NSLog(@"eventTap_ is null");
         return;
     }
-    CFRunLoopSourceRef source = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, eventTap_, 0);
-    CFRunLoopAddSource(CFRunLoopGetCurrent(), source, kCFRunLoopCommonModes);
-    CFRelease(source);
+    source_ = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, eventTap_, 0);
+    CFRunLoopAddSource(CFRunLoopGetCurrent(), source_, kCFRunLoopCommonModes);
     
     // 默认是启用监听的，这里不设置也可以
     CGEventTapEnable(eventTap_, true);
@@ -80,6 +87,11 @@ static CGEventRef callback(CGEventTapProxy proxy,
     if (eventTap_ == NULL) {
         NSLog(@"eventTap_ == NULL");
         return;
+    }
+    if (source_) {
+        CFRunLoopRemoveSource(CFRunLoopGetCurrent(), source_, kCFRunLoopCommonModes);
+        CFRelease(source_);
+        source_ = NULL;
     }
     CGEventTapEnable(eventTap_, false);
     CFRelease(eventTap_);
