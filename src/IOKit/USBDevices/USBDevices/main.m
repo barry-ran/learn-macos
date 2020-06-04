@@ -110,22 +110,24 @@ int main(int argc, const char * argv[]) {
             }
             
             // vid
-            NSString *vid;
+            int vid = 0;
             CFMutableDictionaryRef dict = NULL;
             if (IORegistryEntryCreateCFProperties(device, &dict, kCFAllocatorDefault, kNilOptions) == KERN_SUCCESS) {
-              CFTypeRef obj = CFDictionaryGetValue(dict, CFSTR(kUSBVendorString));
-              if (obj) {
-                  vid = (__bridge NSString *)(CFStringRef)obj;
-              }
+                CFNumberRef num = (CFNumberRef)CFDictionaryGetValue(dict, CFSTR(kUSBVendorID));
+                if (num) {
+                    CFNumberGetValue(num, kCFNumberIntType, &vid);
+                    CFRelease(num);
+                }
             }
             
             // pid
-            NSString *pid;
+            int pid = 0;
             dict = NULL;
             if (IORegistryEntryCreateCFProperties(device, &dict, kCFAllocatorDefault, kNilOptions) == KERN_SUCCESS) {
-              CFTypeRef obj = CFDictionaryGetValue(dict, CFSTR(kUSBProductString));
-              if (obj) {
-                  pid = (__bridge NSString *)(CFStringRef)obj;
+              CFNumberRef num = (CFNumberRef)CFDictionaryGetValue(dict, CFSTR(kUSBProductID));
+              if (num) {
+                  CFNumberGetValue(num, kCFNumberIntType, &pid);
+                  CFRelease(num);
               }
             }
             
@@ -139,7 +141,7 @@ int main(int argc, const char * argv[]) {
               }
             }
             
-            printf("vid: %s pid: %s kUSBSerialNumberString: %s deviceName：%s\n", vid.UTF8String, pid.UTF8String, serial.UTF8String, deviceName);
+            printf("vid: 0x%0x pid: 0x%0x kUSBSerialNumberString: %s deviceName：%s\n", vid, pid, serial.UTF8String, deviceName);
             
             // 获取locationID需要通过interface
             IOUSBDeviceInterface    **deviceInterface = NULL;
@@ -156,7 +158,7 @@ int main(int argc, const char * argv[]) {
                                                    &plugInInterface, &score);
 
             if ((kIOReturnSuccess != kr) || !plugInInterface) {
-                fprintf(stderr, "IOCreatePlugInInterfaceForService returned 0x%08x.\n", kr);
+                fprintf(stderr, "IOCreatePlugInInterfaceForService returned 0x%08x. 0x%08x\n", kr, kIOReturnNoResources);
                 continue;
             }
 
@@ -181,7 +183,7 @@ int main(int argc, const char * argv[]) {
                 fprintf(stderr, "GetLocationID returned 0x%08x.\n", kr);
                 continue;
             } else {
-                fprintf(stderr, "Location ID: 0x%lx\n\n", locationID);
+                fprintf(stderr, "Location ID: 0x%0x\n\n", locationID);
             }
             
             /* And free the reference taken before continuing to the next item */
