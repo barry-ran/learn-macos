@@ -109,7 +109,20 @@ int main(int argc, const char * argv[]) {
     // 从一个C语言字符串创建Objective-C字符串
     NSString* fromCString = [NSString stringWithCString:"A C string" encoding:NSASCIIStringEncoding];
     NSLog(@"fromCString:%@", fromCString);
-    
+    // 比较中文
+    NSString *chnString = @"中文, 汉语";
+    if ([chnString isEqualToString:@"中文, 汉语"]) {
+        NSLog(@"Equal");
+    } else {
+        NSLog(@"NOT Equal");
+    }
+
+    if ([chnString isEqualToString:@"中文, 汉"]) {
+        NSLog(@"Equal");
+    } else {
+        NSLog(@"NOT Equal");
+    }
+        
     // 测试访问property
     MyObject* testPro = [[MyObject alloc] init];
     testPro.protectMember_ = 111; // 注意：点表达式，等于[testPro setProtectMember_: 111;

@@ -30,7 +30,7 @@ int main(int argc, const char * argv[]) {
         
         UInt32 deviceCount = (UInt32)(dataSize/sizeof(CMIOObjectID));
         
-        NSLog(@"audio device count:%i", deviceCount);
+        NSLog(@"video device count:%i", deviceCount);
         
         CMIOObjectID *videoDevices = (CMIOObjectID *)(calloc(dataSize,1));
         if(NULL == videoDevices) {
@@ -47,6 +47,22 @@ int main(int argc, const char * argv[]) {
         }
         
         for(UInt32 i = 0; i < deviceCount; ++i) {
+            
+            CFStringRef deviceName = NULL;
+            dataSize = sizeof(deviceName);
+            propertyAddress.mSelector = kCMIOObjectPropertyName;
+            status = CMIOObjectGetPropertyData(videoDevices[i], &propertyAddress, 0, NULL, dataSize, &used, &deviceName);
+            if(status != kCMIOHardwareNoError) {
+                NSLog (@"CMIOObjectGetPropertyData (kCMIOObjectPropertyName) failed: %i", status);
+                continue;
+            }
+            
+            NSLog(@"*******device name: %@", deviceName);
+            
+            continue;
+            
+            
+            
             // Query device UID
             CFStringRef deviceUID = NULL;
             dataSize = sizeof(deviceUID);
