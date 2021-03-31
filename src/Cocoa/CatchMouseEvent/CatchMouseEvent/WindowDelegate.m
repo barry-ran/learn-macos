@@ -44,8 +44,7 @@ static CGEventRef callback(CGEventTapProxy proxy,
     // 只有在kCGAnnotatedSessionEventTap阶段截获才能拿到kCGMouseEventWindowUnderMousePointer
     CGEventTapLocation location = kCGAnnotatedSessionEventTap;
     // 要捕获的事件
-    CGEventMask mask = CGEventMaskBit(kCGEventLeftMouseDown) | CGEventMaskBit(kCGEventLeftMouseUp) |
-    CGEventMaskBit(kCGEventFlagsChanged);
+    CGEventMask mask = CGEventMaskBit(kCGEventLeftMouseDown) | CGEventMaskBit(kCGEventLeftMouseUp) | CGEventMaskBit(kCGEventMouseMoved) | CGEventMaskBit(kCGEventFlagsChanged);
     
     eventTap_ = CGEventTapCreate(location,                      // 捕获点
                                  kCGHeadInsertEventTap,         // 插入位置
@@ -220,6 +219,20 @@ static CGEventRef callback(CGEventTapProxy proxy,
             NSInteger windowNumber = [NSWindow windowNumberAtPoint:location belowWindowWithWindowNumber:0];
             
             NSLog(@"window id: %lld,%lld,%ld", wn1, wn2, (long)windowNumber);
+        }
+            break;
+        case kCGEventMouseMoved:
+        {
+            // 获取鼠标下窗口标题(mac中有两个坐标系，如果用CGEventGetLocation获取的坐标不能用来windowNumberAtPoint)
+            CGPoint location = CGEventGetUnflippedLocation(event);
+            NSLog(@"location: (%f,%f)", location.x, location.y);
+            
+            // windowNumberAtPoint的方式都可以拿到windowNumber
+            NSInteger windowNumber = [NSWindow windowNumberAtPoint:location belowWindowWithWindowNumber:0];
+            
+            NSLog(@"window id: %ld", (long)windowNumber);
+            
+            [self updateEventStrings:[NSString stringWithFormat:@"windowNumberAtPoint %ld", windowNumber]];
         }
             break;
         default:
