@@ -232,7 +232,17 @@ static CGEventRef callback(CGEventTapProxy proxy,
             
             NSLog(@"window id: %ld", (long)windowNumber);
             
-            [self updateEventStrings:[NSString stringWithFormat:@"windowNumberAtPoint %ld", windowNumber]];
+            CFArrayRef array = CFArrayCreate(NULL, (const void **)&windowNumber, 1, NULL);
+            NSArray *windowInfos = (__bridge NSArray*)CGWindowListCreateDescriptionFromArray(array);
+            CFRelease(array);
+            
+            NSString* windowTitle = [NSString new];
+            if (windowInfos.count > 0) {
+                NSDictionary *windowInfo = [windowInfos objectAtIndex:0];
+                windowTitle = [NSString stringWithFormat:@"%@", [windowInfo objectForKey:(NSString *)kCGWindowName]];
+            }
+            
+            [self updateEventStrings:[NSString stringWithFormat:@"windowNumberAtPoint %ld, title:%@", windowNumber, windowTitle]];
         }
             break;
         default:
