@@ -1,0 +1,586 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4CB7977E26CE380500C364BB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB7977D26CE380500C364BB /* AppDelegate.m */; };
+		4CB7978026CE380500C364BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CB7977F26CE380500C364BB /* Assets.xcassets */; };
+		4CB7978326CE380500C364BB /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CB7978126CE380500C364BB /* MainMenu.xib */; };
+		4CB7978626CE380500C364BB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB7978526CE380500C364BB /* main.m */; };
+		4CB7979126CE380500C364BB /* RoundTransparentWindowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB7979026CE380500C364BB /* RoundTransparentWindowTests.m */; };
+		4CB7979C26CE380600C364BB /* RoundTransparentWindowUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB7979B26CE380600C364BB /* RoundTransparentWindowUITests.m */; };
+		4CB797B126CE3ACF00C364BB /* CustomWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB797B026CE3ACF00C364BB /* CustomWindow.m */; };
+		4CB797B426CE3CBC00C364BB /* CustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB797B326CE3CBC00C364BB /* CustomView.m */; };
+		4CB797B726CE3E3600C364BB /* circle.tif in Resources */ = {isa = PBXBuildFile; fileRef = 4CB797B526CE3E3600C364BB /* circle.tif */; };
+		4CB797B826CE3E3600C364BB /* pentagon.tif in Resources */ = {isa = PBXBuildFile; fileRef = 4CB797B626CE3E3600C364BB /* pentagon.tif */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4CB7978D26CE380500C364BB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CB7977126CE380500C364BB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4CB7977826CE380500C364BB;
+			remoteInfo = RoundTransparentWindow;
+		};
+		4CB7979826CE380600C364BB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CB7977126CE380500C364BB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4CB7977826CE380500C364BB;
+			remoteInfo = RoundTransparentWindow;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4CB7977926CE380500C364BB /* RoundTransparentWindow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoundTransparentWindow.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CB7977C26CE380500C364BB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4CB7977D26CE380500C364BB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4CB7977F26CE380500C364BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4CB7978226CE380500C364BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		4CB7978426CE380500C364BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4CB7978526CE380500C364BB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4CB7978726CE380500C364BB /* RoundTransparentWindow.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RoundTransparentWindow.entitlements; sourceTree = "<group>"; };
+		4CB7978C26CE380500C364BB /* RoundTransparentWindowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoundTransparentWindowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CB7979026CE380500C364BB /* RoundTransparentWindowTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoundTransparentWindowTests.m; sourceTree = "<group>"; };
+		4CB7979226CE380500C364BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4CB7979726CE380600C364BB /* RoundTransparentWindowUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoundTransparentWindowUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CB7979B26CE380600C364BB /* RoundTransparentWindowUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoundTransparentWindowUITests.m; sourceTree = "<group>"; };
+		4CB7979D26CE380600C364BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4CB797AF26CE3ACF00C364BB /* CustomWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomWindow.h; sourceTree = "<group>"; };
+		4CB797B026CE3ACF00C364BB /* CustomWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomWindow.m; sourceTree = "<group>"; };
+		4CB797B226CE3CBC00C364BB /* CustomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomView.h; sourceTree = "<group>"; };
+		4CB797B326CE3CBC00C364BB /* CustomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomView.m; sourceTree = "<group>"; };
+		4CB797B526CE3E3600C364BB /* circle.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = circle.tif; sourceTree = "<group>"; };
+		4CB797B626CE3E3600C364BB /* pentagon.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = pentagon.tif; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4CB7977626CE380500C364BB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CB7978926CE380500C364BB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CB7979426CE380600C364BB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4CB7977026CE380500C364BB = {
+			isa = PBXGroup;
+			children = (
+				4CB7977B26CE380500C364BB /* RoundTransparentWindow */,
+				4CB7978F26CE380500C364BB /* RoundTransparentWindowTests */,
+				4CB7979A26CE380600C364BB /* RoundTransparentWindowUITests */,
+				4CB7977A26CE380500C364BB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4CB7977A26CE380500C364BB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4CB7977926CE380500C364BB /* RoundTransparentWindow.app */,
+				4CB7978C26CE380500C364BB /* RoundTransparentWindowTests.xctest */,
+				4CB7979726CE380600C364BB /* RoundTransparentWindowUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4CB7977B26CE380500C364BB /* RoundTransparentWindow */ = {
+			isa = PBXGroup;
+			children = (
+				4CB797B526CE3E3600C364BB /* circle.tif */,
+				4CB797B626CE3E3600C364BB /* pentagon.tif */,
+				4CB7977C26CE380500C364BB /* AppDelegate.h */,
+				4CB7977D26CE380500C364BB /* AppDelegate.m */,
+				4CB7977F26CE380500C364BB /* Assets.xcassets */,
+				4CB7978126CE380500C364BB /* MainMenu.xib */,
+				4CB7978426CE380500C364BB /* Info.plist */,
+				4CB7978526CE380500C364BB /* main.m */,
+				4CB7978726CE380500C364BB /* RoundTransparentWindow.entitlements */,
+				4CB797AF26CE3ACF00C364BB /* CustomWindow.h */,
+				4CB797B026CE3ACF00C364BB /* CustomWindow.m */,
+				4CB797B226CE3CBC00C364BB /* CustomView.h */,
+				4CB797B326CE3CBC00C364BB /* CustomView.m */,
+			);
+			path = RoundTransparentWindow;
+			sourceTree = "<group>";
+		};
+		4CB7978F26CE380500C364BB /* RoundTransparentWindowTests */ = {
+			isa = PBXGroup;
+			children = (
+				4CB7979026CE380500C364BB /* RoundTransparentWindowTests.m */,
+				4CB7979226CE380500C364BB /* Info.plist */,
+			);
+			path = RoundTransparentWindowTests;
+			sourceTree = "<group>";
+		};
+		4CB7979A26CE380600C364BB /* RoundTransparentWindowUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4CB7979B26CE380600C364BB /* RoundTransparentWindowUITests.m */,
+				4CB7979D26CE380600C364BB /* Info.plist */,
+			);
+			path = RoundTransparentWindowUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4CB7977826CE380500C364BB /* RoundTransparentWindow */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4CB797A026CE380600C364BB /* Build configuration list for PBXNativeTarget "RoundTransparentWindow" */;
+			buildPhases = (
+				4CB7977526CE380500C364BB /* Sources */,
+				4CB7977626CE380500C364BB /* Frameworks */,
+				4CB7977726CE380500C364BB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RoundTransparentWindow;
+			productName = RoundTransparentWindow;
+			productReference = 4CB7977926CE380500C364BB /* RoundTransparentWindow.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4CB7978B26CE380500C364BB /* RoundTransparentWindowTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4CB797A326CE380600C364BB /* Build configuration list for PBXNativeTarget "RoundTransparentWindowTests" */;
+			buildPhases = (
+				4CB7978826CE380500C364BB /* Sources */,
+				4CB7978926CE380500C364BB /* Frameworks */,
+				4CB7978A26CE380500C364BB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4CB7978E26CE380500C364BB /* PBXTargetDependency */,
+			);
+			name = RoundTransparentWindowTests;
+			productName = RoundTransparentWindowTests;
+			productReference = 4CB7978C26CE380500C364BB /* RoundTransparentWindowTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4CB7979626CE380600C364BB /* RoundTransparentWindowUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4CB797A626CE380600C364BB /* Build configuration list for PBXNativeTarget "RoundTransparentWindowUITests" */;
+			buildPhases = (
+				4CB7979326CE380600C364BB /* Sources */,
+				4CB7979426CE380600C364BB /* Frameworks */,
+				4CB7979526CE380600C364BB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4CB7979926CE380600C364BB /* PBXTargetDependency */,
+			);
+			name = RoundTransparentWindowUITests;
+			productName = RoundTransparentWindowUITests;
+			productReference = 4CB7979726CE380600C364BB /* RoundTransparentWindowUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4CB7977126CE380500C364BB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					4CB7977826CE380500C364BB = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+					4CB7978B26CE380500C364BB = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = 4CB7977826CE380500C364BB;
+					};
+					4CB7979626CE380600C364BB = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = 4CB7977826CE380500C364BB;
+					};
+				};
+			};
+			buildConfigurationList = 4CB7977426CE380500C364BB /* Build configuration list for PBXProject "RoundTransparentWindow" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4CB7977026CE380500C364BB;
+			productRefGroup = 4CB7977A26CE380500C364BB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4CB7977826CE380500C364BB /* RoundTransparentWindow */,
+				4CB7978B26CE380500C364BB /* RoundTransparentWindowTests */,
+				4CB7979626CE380600C364BB /* RoundTransparentWindowUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4CB7977726CE380500C364BB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CB7978026CE380500C364BB /* Assets.xcassets in Resources */,
+				4CB797B826CE3E3600C364BB /* pentagon.tif in Resources */,
+				4CB797B726CE3E3600C364BB /* circle.tif in Resources */,
+				4CB7978326CE380500C364BB /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CB7978A26CE380500C364BB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CB7979526CE380600C364BB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4CB7977526CE380500C364BB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CB7978626CE380500C364BB /* main.m in Sources */,
+				4CB797B426CE3CBC00C364BB /* CustomView.m in Sources */,
+				4CB797B126CE3ACF00C364BB /* CustomWindow.m in Sources */,
+				4CB7977E26CE380500C364BB /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CB7978826CE380500C364BB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CB7979126CE380500C364BB /* RoundTransparentWindowTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CB7979326CE380600C364BB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CB7979C26CE380600C364BB /* RoundTransparentWindowUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4CB7978E26CE380500C364BB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4CB7977826CE380500C364BB /* RoundTransparentWindow */;
+			targetProxy = 4CB7978D26CE380500C364BB /* PBXContainerItemProxy */;
+		};
+		4CB7979926CE380600C364BB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4CB7977826CE380500C364BB /* RoundTransparentWindow */;
+			targetProxy = 4CB7979826CE380600C364BB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4CB7978126CE380500C364BB /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4CB7978226CE380500C364BB /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4CB7979E26CE380600C364BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		4CB7979F26CE380600C364BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		4CB797A126CE380600C364BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = RoundTransparentWindow/RoundTransparentWindow.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = RoundTransparentWindow/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.barry.RoundTransparentWindow;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		4CB797A226CE380600C364BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = RoundTransparentWindow/RoundTransparentWindow.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = RoundTransparentWindow/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.barry.RoundTransparentWindow;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		4CB797A426CE380600C364BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = RoundTransparentWindowTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.barry.RoundTransparentWindowTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RoundTransparentWindow.app/Contents/MacOS/RoundTransparentWindow";
+			};
+			name = Debug;
+		};
+		4CB797A526CE380600C364BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = RoundTransparentWindowTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.barry.RoundTransparentWindowTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RoundTransparentWindow.app/Contents/MacOS/RoundTransparentWindow";
+			};
+			name = Release;
+		};
+		4CB797A726CE380600C364BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = RoundTransparentWindowUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.barry.RoundTransparentWindowUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = RoundTransparentWindow;
+			};
+			name = Debug;
+		};
+		4CB797A826CE380600C364BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = RoundTransparentWindowUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.barry.RoundTransparentWindowUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = RoundTransparentWindow;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4CB7977426CE380500C364BB /* Build configuration list for PBXProject "RoundTransparentWindow" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CB7979E26CE380600C364BB /* Debug */,
+				4CB7979F26CE380600C364BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4CB797A026CE380600C364BB /* Build configuration list for PBXNativeTarget "RoundTransparentWindow" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CB797A126CE380600C364BB /* Debug */,
+				4CB797A226CE380600C364BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4CB797A326CE380600C364BB /* Build configuration list for PBXNativeTarget "RoundTransparentWindowTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CB797A426CE380600C364BB /* Debug */,
+				4CB797A526CE380600C364BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4CB797A626CE380600C364BB /* Build configuration list for PBXNativeTarget "RoundTransparentWindowUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CB797A726CE380600C364BB /* Debug */,
+				4CB797A826CE380600C364BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4CB7977126CE380500C364BB /* Project object */;
+}
