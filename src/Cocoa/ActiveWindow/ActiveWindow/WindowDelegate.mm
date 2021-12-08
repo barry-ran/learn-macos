@@ -60,9 +60,17 @@ bool ActivateAppWindow(CGWindowID windowID) {
         CF_RELEASE(winInfoDict)
         return false;
     }
+    
+    NSWorkspaceOpenConfiguration * config = [NSWorkspaceOpenConfiguration configuration];
+            config.allowsRunningApplicationSubstitution = FALSE;
 
     // (NSApplicationActivateAllWindows | NSApplicationActivateIgnoringOtherApps)
-    BOOL isSuccess = [app activateWithOptions:NSApplicationActivateIgnoringOtherApps];
+    BOOL isSuccess = [app activateWithOptions:(NSApplicationActivateAllWindows | NSApplicationActivateIgnoringOtherApps)];
+    // NSApplicationActivateAllWindows 在10.15以后某些app是不生效的，使用openApplicationAtURL来达到ActivateAllWindows的效果
+    // https://github.com/frinkr/GlobalKey/blob/6f774bffc00d500d73dcbd9e2c3bf5b315437442/GlobalKeyLib/GKProxyAppMac.mm#L133
+    if (isSuccess) {
+        [[NSWorkspace sharedWorkspace] openApplicationAtURL:[app bundleURL] configuration:config completionHandler:nil];
+    }
     if (!isSuccess) {
         NSLog(@"active app window fail:%d", windowID);
         CF_RELEASE(winInfoDict)
