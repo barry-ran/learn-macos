@@ -20,7 +20,7 @@ NSPanel* panel;
                                                      styleMask:NSWindowStyleMaskTitled|NSWindowStyleMaskClosable|NSWindowStyleMaskMiniaturizable|NSWindowStyleMaskResizable
                                                        backing:NSBackingStoreBuffered
                                                          defer:YES];
-    // 显示在全屏窗口上面的必要条件：
+    // 显示在其他app的全屏窗口上面的必要条件：
     // 1. 必须NSPanel
     // 2. NSWindowStyleMaskNonactivatingPanel 窗口不激活app
     [panel setStyleMask:panel.styleMask|NSWindowStyleMaskNonactivatingPanel];
@@ -36,7 +36,7 @@ NSPanel* panel;
     [panel center];
     [panel orderFront:nil];
     
-    // 测试NSWindow
+    // 测试NSWindow (NSWindow不支持NSWindowStyleMaskNonactivatingPanel，所以NSWindow不能显示在其他app的全屏窗口上)
     [_window setStyleMask:panel.styleMask|NSWindowStyleMaskNonactivatingPanel];
     [_window setCollectionBehavior:NSWindowCollectionBehaviorCanJoinAllSpaces|NSWindowCollectionBehaviorFullScreenAuxiliary];
     [_window setLevel:kCGStatusWindowLevel];
