@@ -20,6 +20,12 @@ NSPanel* panel;
                                                      styleMask:NSWindowStyleMaskTitled|NSWindowStyleMaskClosable|NSWindowStyleMaskMiniaturizable|NSWindowStyleMaskResizable
                                                        backing:NSBackingStoreBuffered
                                                          defer:YES];
+    // 重要！！！：如果在设置NSWindowStyleMaskNonactivatingPanel style之前设置下面的behavior，会无效
+    // 并且导致即使设置NSWindowStyleMaskNonactivatingPanel style之后再次设置behavior，依然会无效
+    // 这也是为什么在qt中即使设置了NSWindowCollectionBehaviorFullScreenAuxiliary始终不能显示在全屏窗口上面的原因
+    // [panel setCollectionBehavior:NSWindowCollectionBehaviorCanJoinAllSpaces|NSWindowCollectionBehaviorFullScreenAuxiliary];
+    // 参考自telegram https://github.com/Etersoft/telegram-desktop/blob/3e4b3801e4d0c65bf06b73b48982d82fd6be318f/tdesktop/Telegram/Patches/qtbase_5_6_2.diff#L860
+    
     // 显示在其他app的全屏窗口上面的必要条件：
     // 1. 必须NSPanel
     // 2. NSWindowStyleMaskNonactivatingPanel 窗口不激活app
