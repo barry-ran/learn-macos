@@ -14,6 +14,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		618042D62D76E5CA00C4A9B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		61FEE74B2C6362D30084375B /* ShowAboveFullScreenWindow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShowAboveFullScreenWindow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61FEE74E2C6362D30084375B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		61FEE74F2C6362D30084375B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -53,6 +54,7 @@
 		61FEE74D2C6362D30084375B /* ShowAboveFullScreenWindow */ = {
 			isa = PBXGroup;
 			children = (
+				618042D62D76E5CA00C4A9B2 /* Info.plist */,
 				61FEE74E2C6362D30084375B /* AppDelegate.h */,
 				61FEE74F2C6362D30084375B /* AppDelegate.m */,
 				61FEE7512C6362D50084375B /* Assets.xcassets */,
@@ -270,6 +272,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ShowAboveFullScreenWindow/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -294,6 +297,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ShowAboveFullScreenWindow/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
