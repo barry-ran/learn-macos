@@ -117,6 +117,8 @@ NSWindow *testWindow;
         // 测试NSWindowStyleMaskNonactivatingPanel的bug：
         // mac开启触摸板轻击功能，在NSPannel没有获得焦点的时候，直接轻击测试失焦按钮，弹出的测试失焦窗口没有焦点，需要点击其他窗口再点回来才行
         // 核心点在于，焦点给到别的窗口以后，怎么轻击NSWindowStyleMaskNonactivatingPanel的窗口，都不会使该窗口获得焦点，从它这里弹出其他窗口也不会获得焦点
+        // 更进一步测试：进程既有普通窗口也有NSWindowStyleMaskNonactivatingPanel窗口，当进程没有窗口的时候，如果第一次轻击了NSWindowStyleMaskNonactivatingPanel窗口
+        // 再怎么轻击重击这个进程的其他窗口，都无法获得焦点，只有点一下其他进程的窗口获得焦点，再点一下当前进程的非NSWindowStyleMaskNonactivatingPanel窗口，才能让当前进程重新获得焦点
         // 重击没问题，因为重击会使NSPannel获得焦点
         // 创建测试失焦按钮
         NSButton *testFocusButton =
