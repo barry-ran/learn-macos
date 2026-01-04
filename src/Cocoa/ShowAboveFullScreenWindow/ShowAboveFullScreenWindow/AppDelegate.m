@@ -14,6 +14,7 @@
 
 @implementation AppDelegate
 NSPanel* panel;
+NSWindow *testWindow;
 // 最终总结：
 // 辅助进程（开了LSUIElement或者setActivationPolicy设置了NSApplicationActivationPolicyAccessory）不需要设置NSWindowStyleMaskNonactivatingPanel也可以让NSPanel和NSWindow显示在其他全屏窗口上面
 // 普通进程只能让有NSWindowStyleMaskNonactivatingPanel的NSPanel显示在其他全屏窗口上面，NSWindow不支持设置NSWindowStyleMaskNonactivatingPanel
@@ -113,6 +114,18 @@ NSPanel* panel;
         [closeButton setAction:@selector(closePanel:)];
         [panel.contentView addSubview:closeButton];
 
+        // 测试NSWindowStyleMaskNonactivatingPanel的bug：
+        // mac开启触摸板轻击功能，在NSPannel没有获得焦点的时候，直接轻击测试失焦按钮，弹出的测试失焦窗口没有焦点，需要点击其他窗口再点回来才行
+        // 核心点在于，焦点给到别的窗口以后，怎么轻击NSWindowStyleMaskNonactivatingPanel的窗口，都不会使该窗口获得焦点，从它这里弹出其他窗口也不会获得焦点
+        // 重击没问题，因为重击会使NSPannel获得焦点
+        // 创建测试失焦按钮
+        NSButton *testFocusButton =
+            [[NSButton alloc] initWithFrame:NSMakeRect(220, 30, 120, 30)];
+        [testFocusButton setTitle:@"测试失焦按钮"];
+        [testFocusButton setTarget:self];
+        [testFocusButton setAction:@selector(testFocusButtonClicked:)];
+        [panel.contentView addSubview:testFocusButton];
+
 #ifdef LSUIElement_dock
         [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
 #endif
@@ -144,12 +157,53 @@ NSPanel* panel;
       [windowLabel.centerYAnchor
           constraintEqualToAnchor:_window.contentView.centerYAnchor]
     ]];
+
+    // 创建测试失焦窗口
+    testWindow =
+        [[NSWindow alloc] initWithContentRect:NSMakeRect(400, 400, 400, 300)
+                                    styleMask:NSWindowStyleMaskTitled |
+                                              NSWindowStyleMaskClosable |
+                                              NSWindowStyleMaskMiniaturizable |
+                                              NSWindowStyleMaskResizable
+                                      backing:NSBackingStoreBuffered
+                                        defer:YES];
+    [testWindow setTitle:@"测试失焦窗口"];
+
+    // 在测试窗口中间显示文字
+    NSTextField *testWindowLabel =
+        [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 200, 40)];
+    [testWindowLabel setStringValue:@"测试失焦窗口"];
+    [testWindowLabel setBezeled:NO];
+    [testWindowLabel setDrawsBackground:NO];
+    [testWindowLabel setEditable:NO];
+    [testWindowLabel setSelectable:NO];
+    [testWindowLabel setAlignment:NSTextAlignmentCenter];
+    [testWindowLabel setFont:[NSFont systemFontOfSize:20
+                                               weight:NSFontWeightBold]];
+    [testWindowLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [testWindow.contentView addSubview:testWindowLabel];
+    [NSLayoutConstraint activateConstraints:@[
+      [testWindowLabel.centerXAnchor
+          constraintEqualToAnchor:testWindow.contentView.centerXAnchor],
+      [testWindowLabel.centerYAnchor
+          constraintEqualToAnchor:testWindow.contentView.centerYAnchor]
+    ]];
+    // 默认隐藏
+    // [testWindow orderOut:nil]; // 不需要，因为创建时默认就是隐藏的
 }
 
 - (void)closePanel:(id)sender {
     [panel close]; // 关闭面板
 }
 
+- (void)testFocusButtonClicked:(id)sender {
+  // 隐藏当前窗口（panel）
+  [panel orderOut:nil];
+
+  // 显示测试失焦窗口
+  [testWindow center];
+  [testWindow makeKeyAndOrderFront:nil];
+}
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
