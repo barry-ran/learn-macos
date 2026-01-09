@@ -59,7 +59,7 @@ NSWindow *testWindow;
                                 NSWindowStyleMaskResizable
                         backing:NSBackingStoreBuffered
                           defer:YES];
-    // macos 13以下的额外要求：
+    // macos 13以下的额外要求（具体来说是12.4以下）：
     // 重要！！！：在macos 13以下，如果在设置NSWindowStyleMaskNonactivatingPanel style之前设置下面的behavior，会无效
     // 并且导致即使设置NSWindowStyleMaskNonactivatingPanel style之后再次设置behavior，依然会无效
     // 这也是为什么macos 13以下在qt中即使按下面条件设置了style和behavior也始终不能显示在全屏窗口上面的原因
