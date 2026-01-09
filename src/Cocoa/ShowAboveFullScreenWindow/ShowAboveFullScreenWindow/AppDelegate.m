@@ -41,6 +41,10 @@ NSWindow *testWindow;
 // 动态设置进程属性的缺点是dock图标会消失再出现，次数多了还会导致永远消失或者变得很小，只能执行killallDock命令重启dock
 // #define LSUIElement_dock
 #endif
+
+// 设置了进程属性后NSWindowStyleMaskNonactivatingPanel有没有就无所谓了，有的话还会带来轻击触摸板窗口没有焦点的bug
+//#define FIX_QT_MAC13BELOW_NSWindowStyleMaskNonactivatingPanel_NOT_WORK_BUG
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 #ifdef LSUIElement_dock
   [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
@@ -49,7 +53,7 @@ NSWindow *testWindow;
   dispatch_after(
       dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)),
       dispatch_get_main_queue(), ^{
-#ifdef LSUIElement_dock
+#ifdef FIX_QT_MAC13BELOW_NSWindowStyleMaskNonactivatingPanel_NOT_WORK_BUG
         [NSApp setActivationPolicy:NSApplicationActivationPolicyAccessory];
 #endif
         panel = [[NSPanel alloc]
@@ -68,21 +72,22 @@ NSWindow *testWindow;
     // [panel setCollectionBehavior:NSWindowCollectionBehaviorCanJoinAllSpaces|NSWindowCollectionBehaviorFullScreenAuxiliary];
     // 参考自telegram
     // https://github.com/Etersoft/telegram-desktop/blob/3e4b3801e4d0c65bf06b73b48982d82fd6be318f/tdesktop/Telegram/Patches/qtbase_5_6_2.diff#L860
-    // 解决qt bug还有一个方法：在macos13以下，创建窗口之前动态设置进程为辅助进程，创建完窗口再设置回普通进程
+    // 解决qt bug还有一个方法：在macos13以下，创建窗口之前动态设置进程为辅助进程，创建完窗口再设置回普通进程FIX_QT_MAC13BELOW_NSWindowStyleMaskNonactivatingPanel_NOT_WORK_BUG
     
     // macos 13及以上没有这个问题，只要满足下面6个条件
     // 显示在其他app的全屏窗口上面的必要条件：
-#ifndef LSUIElement
-        // 1. 必须NSPanel
-        // 2. NSWindowStyleMaskNonactivatingPanel 窗口不激活app
-        [panel
-            setStyleMask:panel.styleMask | NSWindowStyleMaskNonactivatingPanel];
-#endif
         // 3. NSWindowCollectionBehaviorCanJoinAllSpaces 可以显示在其他屏幕空间
         // 4. NSWindowCollectionBehaviorFullScreenAuxiliary 可以显示在全屏窗口屏幕空间
         [panel setCollectionBehavior:
                    NSWindowCollectionBehaviorCanJoinAllSpaces |
                    NSWindowCollectionBehaviorFullScreenAuxiliary];
+
+#if defined(LSUIElement) && !defined(FIX_QT_MAC13BELOW_NSWindowStyleMaskNonactivatingPanel_NOT_WORK_BUG)
+        // 1. 必须NSPanel
+        // 2. NSWindowStyleMaskNonactivatingPanel 窗口不激活app
+        [panel
+            setStyleMask:panel.styleMask | NSWindowStyleMaskNonactivatingPanel];
+#endif
 
         // 5. z序高一点
         [panel setLevel:kCGStatusWindowLevel];
@@ -133,7 +138,7 @@ NSWindow *testWindow;
         [testFocusButton setAction:@selector(testFocusButtonClicked:)];
         [panel.contentView addSubview:testFocusButton];
 
-#ifdef LSUIElement_dock
+#ifdef FIX_QT_MAC13BELOW_NSWindowStyleMaskNonactivatingPanel_NOT_WORK_BUG
         [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
 #endif
       });
