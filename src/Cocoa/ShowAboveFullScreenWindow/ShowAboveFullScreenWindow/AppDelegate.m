@@ -134,8 +134,10 @@ NSWindow *testWindow;
       });
 
   // 测试NSWindow(NSWindow不支持NSWindowStyleMaskNonactivatingPanel，所以不开LSUIElement的场景下NSWindow不能显示在其他app的全屏窗口上)
+  // NSWindowStyleMaskNonactivatingPanel官方文档说明只支持NSPannel
+  // https://developer.apple.com/documentation/appkit/nswindow/stylemask-swift.struct/nonactivatingpanel?language=objc
 #ifndef LSUIElement
-    [_window setStyleMask:panel.styleMask|NSWindowStyleMaskNonactivatingPanel];
+    [_window setStyleMask:_window.styleMask | NSWindowStyleMaskNonactivatingPanel];
 #endif
     [_window setCollectionBehavior:NSWindowCollectionBehaviorCanJoinAllSpaces|NSWindowCollectionBehaviorFullScreenAuxiliary];
     [_window setLevel:kCGStatusWindowLevel];
