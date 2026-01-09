@@ -21,6 +21,8 @@ NSWindow *testWindow;
 // LSUIElement在info.plist中静态设置辅助进程和普通进程
 // setActivationPolicy可以运行后动态设置辅助进程和普通进程
 // 只要NSPanel/NSWindow（不设置NSWindowStyleMaskNonactivatingPanel）创建时是辅助进程，即使之后改为普通进程，也还是可以显示在其他全屏窗口上面
+// 在info.plist中LSUIElement为yes并且开启LSUIElement和LSUIElement_dock宏的情况下NSWindow *window可以显示在全屏窗口上面，是因为
+// 这个窗口创建时机比较早，在applicationDidFinishLaunching之前就创建了，那时是辅助进程，所以符合上面的说法
 // 为什么这么不喜欢NSWindowStyleMaskNonactivatingPanel？因为在macos12以上有轻击触摸板窗口没有焦点的bug（macos12及以下没有问题）
 // NSWindowStyleMaskNonactivatingPanel的命名和官方文档说明就是它只对Pannel有影响，会产生两种影响：
 // 1. 可以让NSPannel显示在其他全屏窗口上面（配合下面behavior等条件）（macos12及以下要早于behavior设置）
